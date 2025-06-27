@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/player-index.css" />
+  </head>
+  <body>
+    <div class="player">
+      <!-- Img Music -->
+      <div class="img-music">
+        <img
+          src="./assets/img/chay-ngay-di.jpg"
+          alt=""
+          class="music-image"
+          id="music-image"
+        />
+        <p class="music-title song-title"></p>
+      </div>
+
+      <!-- Control Music -->
+      <div class="player-controls">
+        <button class="btn btn-repeat" title="Lặp lại">
+          <img
+            src="https://img.icons8.com/ios-filled/24/000000/repeat.png"
+            alt="Repeat"
+          />
+        </button>
+        <button class="btn btn-prev" title="Bài trước">
+          <img
+            src="https://img.icons8.com/ios-filled/24/000000/skip-to-start.png"
+            alt="Previous"
+          />
+        </button>
+        <button class="btn btn-play" title="Phát / Tạm dừng">
+          <img
+            src="https://img.icons8.com/ios-filled/32/ffffff/play--v1.png"
+            alt="Play"
+            class="icon icon-play"
+          />
+          <img
+            src="https://img.icons8.com/ios-filled/32/ffffff/pause--v1.png"
+            alt="Pause"
+            class="icon icon-pause"
+          />
+        </button>
+        <button class="btn btn-next" title="Bài tiếp">
+          <img
+            src="https://img.icons8.com/ios-filled/24/000000/end.png"
+            alt="Next"
+          />
+        </button>
+        <button class="btn btn-random" title="Xáo trộn">
+          <img
+            src="https://img.icons8.com/ios-filled/24/000000/shuffle.png"
+            alt="Shuffle"
+          />
+        </button>
+
+        <audio id="audio" src="" controls></audio>
+      </div>
+
+      <!-- List Music -->
+        <div class="playlist"></div>
+    </div>
+    <script src="./assets/player-js.js"></script>
+  </body>
+</html>
