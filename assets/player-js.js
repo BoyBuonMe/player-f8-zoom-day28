@@ -10,6 +10,10 @@ const musicPlayer = {
   btnPrev: document.querySelector(".btn-prev"),
   btnRepeat: document.querySelector(".btn-repeat"),
   btnRandom: document.querySelector(".btn-random"),
+  btnDuration: document.querySelector(".audio-range"),
+  btnVolume: document.querySelector(".audio-volume-btn"),
+  volumeRange: document.querySelector(".audio-volume"),
+  containerVolume: document.querySelector(".volume"),
 
   songList: [
     {
@@ -81,6 +85,40 @@ const musicPlayer = {
 
     this.btnRepeat.onclick = this.eventRepeat.bind(this);
     this.btnRandom.onclick = this.eventRandom.bind(this);
+
+    // Cập nhật tiến trình nhạc lên btnDuration (audio-range)
+    this.audioElement.ontimeupdate = () => {
+      if (this.audioElement.duration) {
+        const percent =
+          (this.audioElement.currentTime / this.audioElement.duration) * 100;
+        this.btnDuration.value = percent;
+      }
+    };
+
+    // Cho phép tua nhạc khi kéo btnDuration
+    this.btnDuration.oninput = (e) => {
+      if (this.audioElement.duration) {
+        const seekTime = (e.target.value / 100) * this.audioElement.duration;
+        this.audioElement.currentTime = seekTime;
+      }
+    };
+
+    this.btnVolume.onclick = () => {
+      this.audioElement.muted = !this.audioElement.muted;
+    };
+
+    this.btnVolume.onmouseover = () => {
+      this.volumeRange.style.visibility = "visible";
+    };
+
+    this.containerVolume.onmouseleave = () => {
+      this.volumeRange.style.visibility = "hidden";
+    };
+
+    this.volumeRange.oninput = (e) => {
+      this.audioElement.volume = e.target.value / 100;
+      this.audioElement.muted = e.target.value == 0;
+    };
 
     // this.btnRandom.onclick = () => {
     //   this.isRandom = !this.isRandom;

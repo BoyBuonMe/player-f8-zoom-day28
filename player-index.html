@@ -21,48 +21,70 @@
 
       <!-- Control Music -->
       <div class="player-controls">
-        <button class="btn btn-repeat" title="Lặp lại">
-          <img
-            src="https://img.icons8.com/ios-filled/24/000000/repeat.png"
-            alt="Repeat"
-          />
-        </button>
-        <button class="btn btn-prev" title="Bài trước">
-          <img
-            src="https://img.icons8.com/ios-filled/24/000000/skip-to-start.png"
-            alt="Previous"
-          />
-        </button>
-        <button class="btn btn-play" title="Phát / Tạm dừng">
-          <img
-            src="https://img.icons8.com/ios-filled/32/ffffff/play--v1.png"
-            alt="Play"
-            class="icon icon-play"
-          />
-          <img
-            src="https://img.icons8.com/ios-filled/32/ffffff/pause--v1.png"
-            alt="Pause"
-            class="icon icon-pause"
-          />
-        </button>
-        <button class="btn btn-next" title="Bài tiếp">
-          <img
-            src="https://img.icons8.com/ios-filled/24/000000/end.png"
-            alt="Next"
-          />
-        </button>
-        <button class="btn btn-random" title="Xáo trộn">
-          <img
-            src="https://img.icons8.com/ios-filled/24/000000/shuffle.png"
-            alt="Shuffle"
-          />
-        </button>
+        <div class="container">
+          <button class="btn btn-repeat" title="Lặp lại">
+            <img
+              src="https://img.icons8.com/ios-filled/24/000000/repeat.png"
+              alt="Repeat"
+            />
+          </button>
+          <button class="btn btn-prev" title="Bài trước">
+            <img
+              src="https://img.icons8.com/ios-filled/24/000000/skip-to-start.png"
+              alt="Previous"
+            />
+          </button>
+          <button class="btn btn-play" title="Phát / Tạm dừng">
+            <img
+              src="https://img.icons8.com/ios-filled/32/ffffff/play--v1.png"
+              alt="Play"
+              class="icon icon-play"
+            />
+            <img
+              src="https://img.icons8.com/ios-filled/32/ffffff/pause--v1.png"
+              alt="Pause"
+              class="icon icon-pause"
+            />
+          </button>
+          <button class="btn btn-next" title="Bài tiếp">
+            <img
+              src="https://img.icons8.com/ios-filled/24/000000/end.png"
+              alt="Next"
+            />
+          </button>
+          <button class="btn btn-random" title="Xáo trộn">
+            <img
+              src="https://img.icons8.com/ios-filled/24/000000/shuffle.png"
+              alt="Shuffle"
+            />
+          </button>
+        </div>
 
-        <audio id="audio" src="" controls></audio>
+        <!-- <audio id="audio" src="" controls></audio> -->
+        <div class="audio-wrapper">
+          <input type="range" class="audio-range" min="0" max="100" value="0" />
+          <div class="volume">
+            <button class="audio-volume-btn" title="Âm lượng">
+              <img
+                src="https://img.icons8.com/ios-filled/24/000000/medium-volume.png"
+                alt="Volume"
+              />
+            </button>
+            <input
+              type="range"
+              class="audio-volume"
+              min="0"
+              max="100"
+              value="100"
+              hidden
+            />
+          </div>
+        </div>
+        <audio id="audio" src="your-song.mp3"></audio>
       </div>
 
       <!-- List Music -->
-        <div class="playlist"></div>
+      <div class="playlist"></div>
     </div>
     <script src="./assets/player-js.js"></script>
   </body>
