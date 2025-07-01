@@ -86,7 +86,7 @@ const musicPlayer = {
     this.btnRepeat.onclick = this.eventRepeat.bind(this);
     this.btnRandom.onclick = this.eventRandom.bind(this);
 
-    // Cập nhật tiến trình nhạc lên btnDuration (audio-range)
+    // Cập nhật tiến trình nhạc lên btnDuration (audio-range) và hiển thị thời gian
     this.audioElement.ontimeupdate = () => {
       if (this.audioElement.duration) {
         const percent =
@@ -120,16 +120,72 @@ const musicPlayer = {
       this.audioElement.muted = e.target.value == 0;
     };
 
+    const songItems = document.querySelectorAll(".song-item");
+    songItems.forEach((item, index) => {
+      item.onclick = () => {
+
+        // Bỏ class active ở tất cả các item
+        songItems.forEach((e) => e.classList.remove("active"));
+        
+        // Thêm class active cho item được click
+        item.classList.add("active");
+        this.currentSongIndex = index;
+        this.setupCurrentSong();
+        this.audioElement.play();
+      };
+    });
+
+    console.log(songItems);
+    console.log(musicPlayer.songItems);
+
     // this.btnRandom.onclick = () => {
     //   this.isRandom = !this.isRandom;
     //   this.setRandomActive();
     //   localStorage.setItem("random", this.isRandom);
     // };
+
     // this.btnRepeat.onclick = () => {
     //   this.isRepeat = !this.isRepeat;
     //   this.btnRepeat.classList.toggle("active", this.isRepeat);
     //   console.log(this);
     // };
+
+    // this.audioElement.ontimeupdate = () => {
+    //   if (this.audioElement.duration) {
+    //     const percent =
+    //       (this.audioElement.currentTime / this.audioElement.duration) * 100;
+    //     this.btnDuration.value = percent;
+
+    //     // Hiển thị thời gian
+    //     const format = (s) =>
+    //       String(Math.floor(s / 60)).padStart(2, "0") +
+    //       ":" +
+    //       String(Math.floor(s % 60)).padStart(2, "0");
+    //     this.timeDisplay.textContent = `${format(this.audioElement.currentTime)} / ${format(
+    //       this.audioElement.duration
+    //     )}`;
+    //   } else {
+    //     this.timeDisplay.textContent = "00:00 / 00:00";
+    //   }
+    // };
+  },
+
+  setCurrentTime() {
+    const currentTime = this.audioElement.currentTime;
+    return (
+      String(Math.floor(currentTime / 60)).padStart(2, "0") +
+      ":" +
+      String(Math.floor(currentTime % 60)).padStart(2, "0")
+    );
+  },
+
+  setDurationTime() {
+    const durationTime = this.audioElement.duration || 0;
+    return (
+      String(Math.floor(durationTime / 60)).padStart(2, "0") +
+      ":" +
+      String(Math.floor(durationTime % 60)).padStart(2, "0")
+    );
   },
 
   handlePrevOrNext(step) {
