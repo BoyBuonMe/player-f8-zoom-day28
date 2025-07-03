@@ -1,4 +1,5 @@
 const musicPlayer = {
+  player: document.querySelector(".player"),
   playlist: document.querySelector(".playlist"),
   togglePlayBtn: document.querySelector(".btn-play"),
   titleName: document.querySelector(".song-title"),
@@ -135,6 +136,13 @@ const musicPlayer = {
       };
     });
 
+    document.addEventListener("keydown", (e) => {
+      if(e.code === "Space") {
+        this.togglePlay();
+        e.preventDefault();
+      }
+    });
+
     console.log(songItems);
     console.log(musicPlayer.songItems);
 
@@ -262,6 +270,7 @@ const musicPlayer = {
 
   togglePlay() {
     if (this.audioElement.paused) {
+      this.imgMain.classList.add("rotate");
       this.audioElement.play();
     } else {
       this.audioElement.pause();

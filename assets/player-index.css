@@ -239,6 +239,19 @@ body {
   padding: 6px 24px;
 }
 
+.rotate {
+  animation: rotateAnimation 5s infinite linear;
+}
+
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg); /* Bắt đầu với góc 0 độ */
+  }
+  to {
+    transform: rotate(360deg); /* Kết thúc với góc 360 độ (một vòng quay đầy đủ) */
+  }
+}
+
 /* Hide default audio */
 #audio {
   display: none;
